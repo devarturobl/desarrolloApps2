@@ -27,8 +27,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //Hijo 1 imagen
-              Image.network(
-                  "https://www.invertour.com.mx/wp-content/uploads/2023/09/suiza-mejores-paises-mundo.jpg"),
+              Image.asset('assets/suiza.jpg'),
               SizedBox(
                 height: 30,
               ),
