@@ -57,30 +57,48 @@ class MyApp extends StatelessWidget {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.orange,
+                                color: const Color.fromARGB(255, 255, 68, 0),
                                 shape: BoxShape.circle,
                               ),
-                              padding: EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(20.0),
                               child: Text(
                                 "01",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "What in the UI \ndesign why its work",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
+                                    color: Colors.white, fontSize: 30),
                               ),
                             ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "What in the UI \ndesign why its work",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 25),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("1. About UI desing",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15)),
+                                Text("2. Why It´s Work",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15)),
+                                Text("3. Why we tech UI",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15)),
+                              ],
+                            )
                           ],
                         )
                       ],
