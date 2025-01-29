@@ -45,7 +45,48 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 //cuadro verde
-
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 10.0, right: 10, bottom: 20),
+                  child: Container(
+                    //width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 28, 155, 109),
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.orange,
+                                shape: BoxShape.circle,
+                              ),
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "01",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "What in the UI \ndesign why its work",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 //cuadro Gris
               ],
             )));
