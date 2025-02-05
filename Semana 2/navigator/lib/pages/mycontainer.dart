@@ -15,6 +15,7 @@ class _MycontainerState extends State<Mycontainer> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text("Titulo del APP"),
             Container(
               height: 350,
               width: 350,
@@ -50,9 +51,15 @@ class _MycontainerState extends State<Mycontainer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    alignment: Alignment.center,
                     height: 100,
                     width: 100,
                     color: Colors.red,
+                    //padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Hola Rojo 1.",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   SizedBox(
                     width: 20,
