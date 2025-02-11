@@ -1,6 +1,7 @@
 import 'package:apiwater/model/wather_model.dart';
 import 'package:apiwater/services/wather_service.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class Watherpage extends StatefulWidget {
   const Watherpage({super.key});
@@ -25,13 +26,29 @@ class _WatherpageState extends State<Watherpage> {
       setState(() {
         _wather = water;
       });
-    } 
-    catch (e) {
+    } catch (e) {
       print(e);
     }
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchWather();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(_wather?.cityName ?? 'Loading...'),
+          Lottie.asset('assets/sun.json'),
+          Text('${_wather?.temperature.round()}°C'),
+        ],
+      ),
+    ));
   }
 }
