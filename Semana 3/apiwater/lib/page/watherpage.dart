@@ -31,6 +31,26 @@ class _WatherpageState extends State<Watherpage> {
     }
   }
 
+  //weather animation
+  String getWeatherAnimation(String? maincodition) {
+    if (maincodition == null) {
+      return 'assets/sun.json';
+    } 
+    
+    switch (maincodition.toLowerCase()){
+      case 'clear':
+        return 'assets/sun.json';
+      case 'clouds':
+        return 'assets/cloud.json';
+      case 'rain':
+        return 'assets/rain.json';
+      case 'snow':
+        return 'assets/snow.json';
+      default:
+        return 'assets/sun.json';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
