@@ -12,7 +12,11 @@ class _Page2State extends State<Page2> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Page 2"),
+        child: Column(
+          children: [
+            Text("Page 2"),
+          ],
+        ),
       ),
     );
   }

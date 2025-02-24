@@ -6,18 +6,18 @@ class Mylist2 extends StatefulWidget {
   @override
   State<Mylist2> createState() => _Mylist2State();
   final List milista = [
-    'post1',
-    'post2',
-    'post3',
-    'post4',
-    'post5',
-    'post6',
-    'post7',
-    'post8',
-    'post9',
-    'post10',
-    'post11',
-    'post12'
+    'Melón',
+    'Sandia',
+    'Pera',
+    'Manzana',
+    'Plátano',
+    'Naranja',
+    'Piña',
+    'Fresa',
+    'Uva',
+    'Mango',
+    'Papaya',
+    'Coco'
   ];
 }
 
@@ -32,17 +32,53 @@ class _Mylist2State extends State<Mylist2> {
           child: Container(
             height: 300,
             decoration: BoxDecoration(
-              color: Colors.blueGrey,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Center(
-                child: Text(
-              widget.milista[index],
-              style: TextStyle(fontSize: 40, color: Colors.white),
+                child: Column(
+              children: [
+                Image.asset('assets/${widget.milista[index]}.jpg'),
+                Text(
+                  widget.milista[index],
+                  style: TextStyle(fontSize: 40, color: Colors.black),
+                ),
+              ],
             )),
           ),
         );
       },
+    );
+  }
+}
+
+class Borrar extends StatefulWidget {
+  const Borrar({super.key});
+
+  @override
+  State<Borrar> createState() => _BorrarState();
+}
+
+class _BorrarState extends State<Borrar> {
+  final String texto = 'Hola';
+  final List milistas = [
+    'Melón',
+    'Sandia',
+    'Pera',
+    'Manzana',
+    'Plátano',
+    'Naranja',
+    'Piña',
+    'Fresa',
+    'Uva',
+    'Mango',
+    'Papaya',
+    'Coco'
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(milistas[0]),
     );
   }
 }

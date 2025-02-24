@@ -12,7 +12,7 @@ class Watherpage extends StatefulWidget {
 
 class _WatherpageState extends State<Watherpage> {
   // api key
-  final _watherService = WatherService('2d6f1db34d02373c1ce9c7e5a07ffcc0');
+  final _watherService = WatherService('1561c382aa81ad32430d8d02764a1f91');
   Wather? _wather;
 
   // get the current city
@@ -34,20 +34,20 @@ class _WatherpageState extends State<Watherpage> {
   //weather animation
   String getWeatherAnimation(String? maincodition) {
     if (maincodition == null) {
-      return 'assets/sun.json';
-    } 
-    
-    switch (maincodition.toLowerCase()){
+      return 'assets/default.json';
+    }
+
+    switch (maincodition.toLowerCase()) {
+      case 'fog':
+        return 'assets/cloud.json';
+      case 'shower rain':
+        return 'assets/rain.json';
+      case 'thunderstorm':
+        return 'assets/thunder.json';
       case 'clear':
         return 'assets/sun.json';
-      case 'clouds':
-        return 'assets/cloud.json';
-      case 'rain':
-        return 'assets/rain.json';
-      case 'snow':
-        return 'assets/snow.json';
       default:
-        return 'assets/sun.json';
+        return 'assets/default.json';
     }
   }
 
@@ -64,9 +64,13 @@ class _WatherpageState extends State<Watherpage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(_wather?.cityName ?? 'Loading...'),
-          Lottie.asset('assets/sun.json'),
-          Text('${_wather?.temperature.round()}°C'),
+          Text(
+            _wather?.cityName ?? 'Loading...',
+            style: TextStyle(fontSize: 20),
+          ),
+          Lottie.asset(getWeatherAnimation(_wather?.mainCodition)),
+          Text('${_wather?.temperature.round()}°C',
+              style: TextStyle(fontSize: 20)),
         ],
       ),
     ));

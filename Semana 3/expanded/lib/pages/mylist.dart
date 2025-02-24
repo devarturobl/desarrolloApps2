@@ -22,7 +22,7 @@ class _MylistState extends State<Mylist> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(40.0),
+          padding: EdgeInsets.all(40.0),
           child: Expanded(
             child: Container(
               height: 200,
@@ -30,6 +30,7 @@ class _MylistState extends State<Mylist> {
             ),
           ),
         ),
+        Padding(padding: const EdgeInsets.all(40.0), child: Text("Hola")),
         Padding(
           padding: const EdgeInsets.all(40.0),
           child: Expanded(
