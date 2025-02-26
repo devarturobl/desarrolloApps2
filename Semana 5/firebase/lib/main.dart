@@ -1,6 +1,7 @@
 import 'package:firebase/firebase_options.dart';
-import 'package:firebase/pages/container_page.dart';
-import 'package:firebase/pages/home_page.dart';
+//import 'package:firebase/pages/container_page.dart';
+import 'package:firebase/pages/home_notes.dart';
+//import 'package:firebase/pages/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: ContainerPage(),
+      home: HomeNotes(),
     );
   }
 }
