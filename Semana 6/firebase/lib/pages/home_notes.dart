@@ -115,9 +115,37 @@ class _HomeNotesState extends State<HomeNotes> {
                                 ),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    color: Colors.white, fontSize: 10),
+                                    color: Colors.white, fontSize: 15),
                               ),
-                              Icon(Icons.delete, color: Colors.white)
+                              GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                              content: Text(
+                                                  "¿Deseas eliminar la nota?"),
+                                              actions: [
+                                                ElevatedButton(
+                                                    onPressed: () {
+                                                      firestoreService
+                                                          .deleteNote(
+                                                              document.id);
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("Si")),
+                                                ElevatedButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("No")),
+                                              ],
+                                            ));
+                                  },
+                                  child: Icon(
+                                    Icons.delete,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ))
                             ],
                           )
                         ],
