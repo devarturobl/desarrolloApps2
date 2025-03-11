@@ -11,9 +11,7 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginpageState extends State<Loginpage> {
-  // get auth service
   final authService = AuthService();
-  // textcontroller
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -36,34 +34,81 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
-        children: [
-          TextField(
-            controller: _emailController,
-            decoration: InputDecoration(labelText: "Email"),
+      //backgroundColor: Colors.grey[100],
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Bienvenido",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Inicia sesión para continuar",
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 30),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: "Correo Electrónico",
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Contraseña",
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: login,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  "Iniciar Sesión",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Resgisterpage()));
+                },
+                child: const Text(
+                  "¿No tienes cuenta? Regístrate",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+            ],
           ),
-          TextField(
-            controller: _passwordController,
-            decoration: InputDecoration(labelText: "Password"),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          ElevatedButton(
-            onPressed: login,
-            child: Text("Login"),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Resgisterpage()));
-              },
-              child: Center(child: Text("¿No tienes cuenta?, Sing Up"))),
-        ],
+        ),
       ),
     );
   }

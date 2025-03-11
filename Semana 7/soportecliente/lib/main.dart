@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Soporte Cliente',
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: AuthGate(),
     );
