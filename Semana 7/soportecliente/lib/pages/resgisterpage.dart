@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_service.dart';
-import 'package:soportecliente/pages/profilepage.dart';
-import 'package:soportecliente/pages/resgisterpage.dart';
+import 'package:soportecliente/pages/loginpage.dart';
 
-class Loginpage extends StatefulWidget {
-  const Loginpage({super.key});
+class Resgisterpage extends StatefulWidget {
+  const Resgisterpage({super.key});
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<Resgisterpage> createState() => _ResgisterpageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _ResgisterpageState extends State<Resgisterpage> {
   // get auth service
   final authService = AuthService();
   // textcontroller
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
-  void login() async {
+  //sing up function
+  void singUp() async {
     final email = _emailController.text;
     final password = _passwordController.text;
+    final confirmPassword = _confirmPasswordController.text;
+
+    if (password != confirmPassword) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Password and Confirm Password must be same")));
+      return;
+    }
 
     try {
-      await authService.singInWithEmailAndPassword(email, password);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Profilepage()));
+      await authService.singUpWithEmailAndPassword(email, password);
+      Navigator.pop(context);
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(e.toString())));
+            .showSnackBar(SnackBar(content: Text("Error:$e")));
       }
     }
   }
@@ -47,12 +54,16 @@ class _LoginpageState extends State<Loginpage> {
             controller: _passwordController,
             decoration: InputDecoration(labelText: "Password"),
           ),
+          TextField(
+            controller: _confirmPasswordController,
+            decoration: InputDecoration(labelText: "Confirm Password"),
+          ),
           SizedBox(
             height: 12,
           ),
           ElevatedButton(
-            onPressed: login,
-            child: Text("Login"),
+            onPressed: singUp,
+            child: Text("Sing Up"),
           ),
           SizedBox(
             height: 12,
@@ -60,9 +71,9 @@ class _LoginpageState extends State<Loginpage> {
           GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Resgisterpage()));
+                    MaterialPageRoute(builder: (context) => Loginpage()));
               },
-              child: Center(child: Text("¿No tienes cuenta?, Sing Up"))),
+              child: Center(child: Text("¿Ya tienes cuenta?, Sing In"))),
         ],
       ),
     );
