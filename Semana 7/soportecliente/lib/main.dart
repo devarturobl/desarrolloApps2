@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_gate.dart';
+import 'package:soportecliente/storage/demostorage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       title: 'Soporte Cliente',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
+      //home: AuthGate(),
+      home: Demostorage(),
     );
   }
 }
