@@ -1,0 +1,6 @@
+Database = repaso
+Password = &k6i-nyjfvPwL-3
+
+proyect url: https://msnkakqahgeztjjgujgp.supabase.co
+apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zbmtha3FhaGdlenRqamd1amdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIzOTY1MTgsImV4cCI6MjA1Nzk3MjUxOH0.WMIoymQs3pPBlPlsaV3v366JyXRYF7wv9Wt1gv0UxQc
+
