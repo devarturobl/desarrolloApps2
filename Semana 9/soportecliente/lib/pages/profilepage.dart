@@ -104,8 +104,8 @@ class _ProfilepageState extends State<Profilepage> {
         ),
       ),
       body: StreamBuilder<List<Ticket>>(
-        stream: ticketService.getUserTickets(
-            userEmail), // Pasa el userEmail al stream
+        stream: ticketService
+            .getUserTickets(userEmail), // Pasa el userEmail al stream
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -200,6 +200,8 @@ class _ProfilepageState extends State<Profilepage> {
                                       ),
                                       Text(
                                         ticket.stateticket.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold), 
                                       ),
                                     ],
                                   ),
