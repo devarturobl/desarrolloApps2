@@ -85642,8 +85642,8 @@ break
 case 6:case 1:return A.w(q,r)
 case 2:return A.v(o,r)}})
 return A.x($async$BE,r)},
-M(a){var s=this,r=null,q=A.ZS(r,!0,B.TM),p=A.Ct(s.e,B.Fw,B.hK,r,5,!1,B.kt),o=t.D,n=A.lt(A.b([A.aAZ(A.a64(B.n1,r),B.TN,s.gaoY()),A.aAZ(A.a64(B.n1,r),B.U1,s.gaoZ())],o),B.aa,B.aj,B.ak),m=s.w
-return A.Bh(q,new A.ck(B.mA,A.hJ(A.b([A.aB5(A.axg(A.hJ(A.b([p,B.cd,n,B.cd,m!=null?new A.tn(A.aCX(r,r,new A.mz(m,1)),r):B.TW],o),B.aa,B.aj,B.ak),r)),B.cd,A.K2(!1,B.U0,r,r,B.cA,r,r,r,r,s.gahh(),r,r)],o),B.aa,B.aj,B.ak),r),r)}}
+M(a){var s=this,r=null,q=A.ZS(r,!0,B.TM),p=A.Ct(s.e,B.Fw,B.hK,r,5,!1,B.kt),o=t.D,n=A.lt(A.b([A.aAZ(A.a64(B.n1,r),B.TN,s.gaoY()),A.aAZ(A.a64(B.n1,r),B.U0,s.gaoZ())],o),B.aa,B.aj,B.ak),m=s.w
+return A.Bh(q,new A.ck(B.mA,A.hJ(A.b([A.aB5(A.axg(A.hJ(A.b([p,B.cd,n,B.cd,m!=null?new A.tn(A.aCX(r,r,new A.mz(m,1)),r):B.TV],o),B.aa,B.aj,B.ak),r)),B.cd,A.K2(!1,B.U_,r,r,B.cA,r,r,r,r,s.gahh(),r,r)],o),B.aa,B.aj,B.ak),r),r)}}
 A.aku.prototype={
 $0(){var s=this.b.c
 s===$&&A.a()
@@ -85734,9 +85734,9 @@ return new A.Ur(new A.ot(s),new A.CI(s.qm("service")))}}
 A.Ur.prototype={
 M(a){var s,r,q,p=this,o=null,n=p.d.BP()
 if(n==null)n="Usuario desconocido"
-s=A.ZS(B.CG,o,B.TU)
+s=A.ZS(B.CG,o,B.U1)
 r=t.D
-r=A.b([new A.K_(new A.dl(A.aY(255,1,19,33),o,o,o,o,o,B.aI),A.hJ(A.b([B.TY,B.hF,B.BP,B.hF,A.cO(n,o,o,o,B.Ry,o,o)],r),B.c4,B.aj,B.ak),o),A.zE(B.F9,new A.apT(a),o,B.TO),A.zE(B.F8,new A.apU(a),o,B.TV),A.zE(B.F7,new A.apV(a),o,B.TP),A.zE(B.F5,new A.apW(p,a),o,B.TR)],r)
+r=A.b([new A.K_(new A.dl(A.aY(255,1,19,33),o,o,o,o,o,B.aI),A.hJ(A.b([B.TX,B.hF,B.BP,B.hF,A.cO(n,o,o,o,B.Ry,o,o)],r),B.c4,B.aj,B.ak),o),A.zE(B.F9,new A.apT(a),o,B.TO),A.zE(B.F8,new A.apU(a),o,B.TU),A.zE(B.F7,new A.apV(a),o,B.TP),A.zE(B.F5,new A.apW(p,a),o,B.TR)],r)
 q=A.a6([null,0],t.LO,t.S)
 return A.Bh(s,A.axm(new A.apX(p),p.e.YA(n),t.Cz),new A.JW(new A.zF(new A.ahs(!0,!0,!0,r,q),B.aX,B.aB,!1,o,o,B.l3,!1,o,5,B.Z,B.y2,o,B.U,B.ao,o),o))},
 a6Z(a){switch(a){case"Creado":return B.cL
@@ -85788,7 +85788,7 @@ p=A.ex(10)
 o=t.D
 n=A.b([A.cO(k.c,l,l,l,l,l,l),B.On],o)
 m=k.d
-if(A.axy(m)!=null&&A.axy(m).gVP())B.b.L(n,A.b([A.hi(l,A.lt(A.b([B.Fa,B.Om,B.TX],o),B.aa,B.aj,B.ak),B.Z,!1,l,l,l,l,l,l,l,l,l,l,l,l,l,new A.apN(a,k),l,l,l,l,l,l)],o))
+if(A.axy(m)!=null&&A.axy(m).gVP())B.b.L(n,A.b([A.hi(l,A.lt(A.b([B.Fa,B.Om,B.TW],o),B.aa,B.aj,B.ak),B.Z,!1,l,l,l,l,l,l,l,l,l,l,l,l,l,new A.apN(a,k),l,l,l,l,l,l)],o))
 p=A.mt(l,A.hJ(n,B.c4,B.aj,B.ak),B.A,l,new A.dl(B.D,l,l,p,l,l,B.aI),l,l,l,B.eg,l,l,l)
 n=A.ex(10)
 return A.hi(l,A.azZ(A.zE(l,l,A.hJ(A.b([A.mt(l,A.hJ(A.b([A.lt(A.b([A.cO("Enviado: ",l,l,l,A.fd(l,l,l,l,l,l,l,l,l,l,l,l,l,l,B.aY,l,l,!0,l,l,l,l,l,l,l,l),l,l),A.cO(i,l,l,l,l,l,l)],o),B.aa,B.bP,B.ak),A.lt(A.b([A.cO("Estado: ",l,l,l,A.fd(l,l,l,l,l,l,l,l,l,l,l,l,l,l,B.aY,l,l,!0,l,l,l,l,l,l,l,l),l,l),A.cO(j,l,l,l,A.fd(l,l,l,l,l,l,l,l,l,l,l,l,l,l,B.aY,l,l,!0,l,l,l,l,l,l,l,l),l,l)],o),B.aa,B.bP,B.ak)],o),B.aa,B.aj,B.ak),B.A,l,new A.dl(B.D,l,l,n,l,l,B.aI),l,l,l,B.eg,l,l,210)],o),B.cw,B.aj,B.ak),new A.ck(B.my,p,l)),q,new A.cq(r,B.q)),B.Z,!1,l,l,l,l,l,l,l,new A.apO(s,a,k),l,l,l,l,l,l,l,l,l,l,l,l)}else return B.ar},
@@ -85863,7 +85863,7 @@ case 6:case 1:return A.w(q,r)
 case 2:return A.v(o,r)}})
 return A.x($async$wi,r)},
 M(a){var s=this,r=null
-return A.Bh(r,A.kw(A.axg(A.hJ(A.b([B.TT,B.hF,B.TG,B.hG,A.Ct(s.e,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Correo Electr\xf3nico",!0,r,B.n4,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!1,r),B.cd,A.Ct(s.f,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Contrase\xf1a",!0,r,B.n5,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!0,r),B.cd,A.Ct(s.r,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Confirmar Contrase\xf1a",!0,r,B.F6,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!0,r),B.hG,A.K2(!1,B.U_,r,r,B.cA,r,r,r,r,s.gZx(),r,A.aB_(r,r,B.h5,r,r,r,r,r,r,r,r,r,B.mC,r,new A.cq(A.ex(12),B.q),r,r,r,r)),B.cd,A.hi(r,B.TL,B.Z,!1,r,r,r,r,r,r,r,r,r,r,r,r,r,new A.aqG(a),r,r,r,r,r,r)],t.D),B.aa,B.h3,B.ak),B.mB),r,r),r)}}
+return A.Bh(r,A.kw(A.axg(A.hJ(A.b([B.TT,B.hF,B.TG,B.hG,A.Ct(s.e,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Correo Electr\xf3nico",!0,r,B.n4,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!1,r),B.cd,A.Ct(s.f,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Contrase\xf1a",!0,r,B.n5,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!0,r),B.cd,A.Ct(s.r,A.zf(r,new A.eJ(4,A.ex(12),B.cq),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,"Confirmar Contrase\xf1a",!0,r,B.F6,r,r,r,r,r,r,r,r,r,r,r),r,1,r,!0,r),B.hG,A.K2(!1,B.TZ,r,r,B.cA,r,r,r,r,s.gZx(),r,A.aB_(r,r,B.h5,r,r,r,r,r,r,r,r,r,B.mC,r,new A.cq(A.ex(12),B.q),r,r,r,r)),B.cd,A.hi(r,B.TL,B.Z,!1,r,r,r,r,r,r,r,r,r,r,r,r,r,new A.aqG(a),r,r,r,r,r,r)],t.D),B.aa,B.h3,B.ak),B.mB),r,r),r)}}
 A.aqG.prototype={
 $0(){var s=A.la(new A.aqF(),null,t.z)
 A.eI(this.a,!1).f2(s)},
@@ -90877,8 +90877,8 @@ B.BP=new A.jp(B.T,null,null,B.BW,null)
 B.Xe=new A.akq(0,"material")
 B.BX=new A.xA(null)
 B.iq=new A.jp(B.T,null,null,B.BX,null)
-B.TZ=new A.cF("No tienes tickets registrados.",null,null,null,null,null,null,null,null)
-B.lE=new A.jp(B.T,null,null,B.TZ,null)
+B.TY=new A.cF("No tienes tickets registrados.",null,null,null,null,null,null,null,null)
+B.lE=new A.jp(B.T,null,null,B.TY,null)
 B.ir=new A.eB(0,"close")
 B.is=new A.eB(1,"error")
 B.lF=new A.eB(2,"join")
@@ -93300,16 +93300,16 @@ B.TR=new A.cF("Cerrar Sesion",null,null,null,null,null,null,null,null)
 B.PX=new A.o(!0,B.cL,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,B.hJ,null,null,null,null,null,null,null,null)
 B.TS=new A.cF("\xbfNo tienes cuenta? Reg\xedstrate",null,B.PX,null,null,null,null,null,null)
 B.TT=new A.cF("Crea tu cuenta",null,B.zl,null,null,null,null,null,null)
-B.TU=new A.cF("Dashboard",null,B.hN,null,null,null,null,null,null)
-B.TV=new A.cF("Levantar ticket",null,null,null,null,null,null,null,null)
-B.TW=new A.cF("No hay imagen seleccionada",null,null,null,null,null,null,null,null)
+B.TU=new A.cF("Levantar ticket",null,null,null,null,null,null,null,null)
+B.TV=new A.cF("No hay imagen seleccionada",null,null,null,null,null,null,null,null)
 B.Ro=new A.o(!0,B.k,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.TX=new A.cF("Ver adjunto",null,B.Ro,null,null,null,null,null,null)
+B.TW=new A.cF("Ver adjunto",null,B.Ro,null,null,null,null,null,null)
 B.Rp=new A.o(!0,B.k,null,null,null,null,24,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.TY=new A.cF("Soporte Tecnico",null,B.Rp,null,null,null,null,null,null)
-B.U_=new A.cF("Registrarse",null,B.zk,null,null,null,null,null,null)
-B.U0=new A.cF("Enviar Ticket",null,null,null,null,null,null,null,null)
-B.U1=new A.cF("Seleccionar una foto",null,null,null,null,null,null,null,null)
+B.TX=new A.cF("Soporte Tecnico",null,B.Rp,null,null,null,null,null,null)
+B.TZ=new A.cF("Registrarse",null,B.zk,null,null,null,null,null,null)
+B.U_=new A.cF("Enviar Ticket",null,null,null,null,null,null,null,null)
+B.U0=new A.cF("Seleccionar una foto",null,null,null,null,null,null,null,null)
+B.U1=new A.cF("Dashboard Soporte Tecnico",null,B.hN,null,null,null,null,null,null)
 B.Xd=new A.ajj(0,"system")
 B.KN=new A.i(0.05,0)
 B.KO=new A.i(0.133333,0.06)

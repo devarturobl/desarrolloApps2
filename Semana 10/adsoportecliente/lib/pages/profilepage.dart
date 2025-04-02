@@ -8,7 +8,6 @@ import 'package:soportecliente/pages/loginpage.dart';
 import 'package:soportecliente/pages/showimage.dart';
 import 'package:soportecliente/service/supabase_service.dart';
 
-
 class Profilepage extends StatefulWidget {
   const Profilepage({super.key});
 
@@ -41,7 +40,7 @@ class _ProfilepageState extends State<Profilepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 1, 19, 33),
-        title: const Text("Dashboard",
+        title: const Text("Dashboard Soporte Tecnico",
             style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       drawer: Drawer(
