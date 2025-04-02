@@ -5,7 +5,9 @@ import 'package:soportecliente/model/ticket.dart';
 import 'package:soportecliente/pages/add_ticket.dart';
 import 'package:soportecliente/pages/historytickets.dart';
 import 'package:soportecliente/pages/loginpage.dart';
+import 'package:soportecliente/pages/showimage.dart';
 import 'package:soportecliente/service/supabase_service.dart';
+
 
 class Profilepage extends StatefulWidget {
   const Profilepage({super.key});
@@ -128,7 +130,6 @@ class _ProfilepageState extends State<Profilepage> {
                 if (ticket.stateticket != 'Resuelto') {
                   return GestureDetector(
                     onLongPress: () {
-                      //ticketService.updateTicketClose(ticket);
                       showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
@@ -157,6 +158,9 @@ class _ProfilepageState extends State<Profilepage> {
                               ));
                     },
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       color: _getColorForState(ticket.stateticket.toString()),
                       child: ListTile(
                         title: Padding(
@@ -166,7 +170,44 @@ class _ProfilepageState extends State<Profilepage> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.black54),
-                              child: Text(ticket.details.toString())),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(ticket.details.toString()),
+                                  const SizedBox(height: 5),
+                                  if (Uri.tryParse(
+                                              ticket.multimedia.toString()) !=
+                                          null &&
+                                      Uri.tryParse(
+                                              ticket.multimedia.toString())!
+                                          .isAbsolute) ...[
+                                    GestureDetector(
+                                      onTap: () async {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => ShowImage(
+                                                    text: ticket.multimedia
+                                                        .toString())));
+                                      },
+                                      child: Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.attach_file,
+                                            color: Colors.white,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          const Text(
+                                            'Ver adjunto',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ],
+                              )),
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -201,7 +242,7 @@ class _ProfilepageState extends State<Profilepage> {
                                       Text(
                                         ticket.stateticket.toString(),
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold), 
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
