@@ -1,0 +1,10 @@
+^C:\FIREBASE\SEMANA 7\SOPORTECLIENTE\WINDOWS\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/firebase/Semana 7/soportecliente/windows" "-BC:/firebase/Semana 7/soportecliente/build/windows/x64" --check-stamp-file "C:/firebase/Semana 7/soportecliente/build/windows/x64/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

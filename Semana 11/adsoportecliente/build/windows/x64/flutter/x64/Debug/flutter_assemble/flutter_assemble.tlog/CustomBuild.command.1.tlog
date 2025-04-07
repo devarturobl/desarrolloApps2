@@ -1,0 +1,28 @@
+^C:\FIREBASE\SEMANA 7\SOPORTECLIENTE\BUILD\WINDOWS\X64\CMAKEFILES\C8EE18E711B4D45C2BAA513343BA233D\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\dev\flutter "PROJECT_DIR=C:\firebase\Semana 7\soportecliente" FLUTTER_ROOT=C:\dev\flutter "FLUTTER_EPHEMERAL_DIR=C:\firebase\Semana 7\soportecliente\windows\flutter\ephemeral" "PROJECT_DIR=C:\firebase\Semana 7\soportecliente" "FLUTTER_TARGET=C:\firebase\Semana 7\soportecliente\lib\main.dart" DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false "PACKAGE_CONFIG=C:\firebase\Semana 7\soportecliente\.dart_tool\package_config.json" C:/dev/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\FIREBASE\SEMANA 7\SOPORTECLIENTE\BUILD\WINDOWS\X64\CMAKEFILES\95C221A2850F6A1F7F2737124028A13F\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\FIREBASE\SEMANA 7\SOPORTECLIENTE\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/firebase/Semana 7/soportecliente/windows" "-BC:/firebase/Semana 7/soportecliente/build/windows/x64" --check-stamp-file "C:/firebase/Semana 7/soportecliente/build/windows/x64/flutter/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
