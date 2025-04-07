@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_service.dart';
 import 'package:soportecliente/pages/creates.dart';
 import 'package:soportecliente/pages/historytickets.dart';
+import 'package:soportecliente/pages/inprocess.dart';
 import 'package:soportecliente/pages/loginpage.dart';
+import 'package:soportecliente/pages/under_review.dart';
 import 'package:soportecliente/service/supabase_service.dart';
 
 class Profilepage extends StatefulWidget {
@@ -88,15 +90,13 @@ class _ProfilepageState extends State<Profilepage> {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const HistoryTickets())),
+                        builder: (context) => const UnderReview())),
               ),
               ListTile(
                 leading: const Icon(Icons.work),
                 title: const Text('En Proceso'),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HistoryTickets())),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const InProcess())),
               ),
               ListTile(
                 leading: const Icon(Icons.safety_check_sharp),

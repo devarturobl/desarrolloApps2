@@ -1,6 +1,7 @@
 class Ticket {
   int? id;
   String? userapp;
+  String? assigned;
   String? details;
   String? multimedia;
   String? stateticket;
@@ -13,6 +14,7 @@ class Ticket {
     required this.details,
     required this.multimedia,
     required this.stateticket,
+    this.assigned,
     this.createdAt,
     this.changeState,
   });
@@ -21,6 +23,7 @@ class Ticket {
     return Ticket(
       id: map['id'] as int,
       userapp: map['userapp'] as String,
+      assigned: map['assigned'] as String,
       details: map['details'] as String,
       multimedia: map['multimedia'] as String,
       stateticket: map['stateticket'] as String,
@@ -38,6 +41,7 @@ class Ticket {
       'details': details,
       'multimedia': multimedia,
       'stateticket': stateticket,
+      'assigned': assigned,
     };
   }
 }

@@ -4,14 +4,14 @@ import 'package:soportecliente/auth/auth_service.dart';
 import 'package:soportecliente/model/ticket.dart';
 import 'package:soportecliente/service/supabase_service.dart';
 
-class HistoryTickets extends StatefulWidget {
-  const HistoryTickets({super.key});
+class UnderReview extends StatefulWidget {
+  const UnderReview({super.key});
 
   @override
-  State<HistoryTickets> createState() => _HistoryTicketsState();
+  State<UnderReview> createState() => _UnderReviewState();
 }
 
-class _HistoryTicketsState extends State<HistoryTickets> {
+class _UnderReviewState extends State<UnderReview> {
   final authService = AuthService();
   final ticketService = TicketService();
 
@@ -21,7 +21,7 @@ class _HistoryTicketsState extends State<HistoryTickets> {
         authService.getCurrentUserEmail() ?? 'Usuario desconocido';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Historial de Ticket Resueltos"),
+        title: const Text("Tickets en Revisión"),
         centerTitle: true,
       ),
       body: StreamBuilder<List<Ticket>>(
@@ -46,13 +46,9 @@ class _HistoryTicketsState extends State<HistoryTickets> {
                 String formattedDate = ticket.createdAt != null
                     ? DateFormat('kk:mm - dd-MM-yyyy').format(ticket.createdAt!)
                     : 'no disponible';
-                String formattedDate2 = ticket.changeState != null
-                    ? DateFormat('kk:mm - dd-MM-yyyy')
-                        .format(ticket.changeState!)
-                    : 'no disponible';
-                if (ticket.stateticket == 'Resuelto') {
+                if (ticket.stateticket == 'En Revisión') {
                   return Card(
-                    color: Colors.green,
+                    color: Colors.yellow,
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),
@@ -94,30 +90,6 @@ class _HistoryTicketsState extends State<HistoryTickets> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(ticket.userapp.toString()),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Resuelto: ",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(formattedDate2),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Por: ",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      ticket.assigned.toString(),
-                                    ),
                                   ],
                                 ),
                               ],
