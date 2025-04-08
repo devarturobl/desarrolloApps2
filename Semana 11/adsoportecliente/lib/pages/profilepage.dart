@@ -57,33 +57,69 @@ class _ProfilepageState extends State<Profilepage> {
       ),
       NavigationRailDestination(
         icon: Stack(
-      children: [
-      const Icon(Icons.new_label_outlined),
-      StreamBuilder<List<Ticket>>(
-      stream: ticketService.closedTickets(
-      authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
-      builder: (context, snapshot) {
-      if (!snapshot.hasData) return const SizedBox();
-      final count = snapshot.data!.length;
-      if (count == 0) return const SizedBox();
-      return Badge.count(count: count,
-      child: const Icon(Icons.new_label_outlined),
-      );
-      },
-      ),
-      ],
-      ),
+          children: [
+            const Icon(Icons.new_label_outlined),
+            StreamBuilder<List<Ticket>>(
+              stream: ticketService.createsTickets(
+                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return const SizedBox();
+                final count = snapshot.data!.length;
+                if (count == 0) return const SizedBox();
+                return Badge.count(
+                  count: count,
+                  child: const Icon(Icons.new_label_outlined),
+                );
+              },
+            ),
+          ],
+        ),
         selectedIcon: Icon(Icons.new_label),
         label: Text('Creados'),
       ),
       NavigationRailDestination(
-        icon: const Icon(Icons.remove_red_eye_outlined),
+        icon: Stack(
+          children: [
+            const Icon(Icons.remove_red_eye_outlined),
+            StreamBuilder<List<Ticket>>(
+              stream: ticketService.reviewsTickets(
+                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return const SizedBox();
+                final count = snapshot.data!.length;
+                if (count == 0) return const SizedBox();
+                return Badge.count(
+                  count: count,
+                  child: Icon(Icons.remove_red_eye_outlined),
+                );
+              },
+            ),
+          ],
+        ),
         selectedIcon: const Icon(Icons.remove_red_eye),
-        label: const Text('En Revisión'),
+        label: Text('En Revisión'),
       ),
-      const NavigationRailDestination(
-        icon: Icon(Icons.work_outline),
-        selectedIcon: Icon(Icons.work),
+      //lkalsdjkmdsal ksdmalsda kdasm lasd lkasnd
+      NavigationRailDestination(
+        icon: Stack(
+          children: [
+            const Icon(Icons.work_outline),
+            StreamBuilder<List<Ticket>>(
+              stream: ticketService.processTickets(
+                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return const SizedBox();
+                final count = snapshot.data!.length;
+                if (count == 0) return const SizedBox();
+                return Badge.count(
+                  count: count,
+                  child: Icon(Icons.work_outline),
+                );
+              },
+            ),
+          ],
+        ),
+        selectedIcon: const Icon(Icons.work),
         label: Text('En Proceso'),
       ),
       const NavigationRailDestination(

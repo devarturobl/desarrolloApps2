@@ -22,11 +22,39 @@ class TicketService {
   Stream<List<Ticket>> closedTickets(String userApp) {
     return database
         .stream(primaryKey: ['id'])
-        //.eq('userapp', userApp)
+        //.eq('stateticket', 'Creado')
         .order('changeState', ascending: false)
         .map((data) =>
             data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
   }
+
+  Stream<List<Ticket>> createsTickets(String userApp) {
+    return database
+        .stream(primaryKey: ['id'])
+        .eq('stateticket', 'Creado')
+        .order('changeState', ascending: false)
+        .map((data) =>
+            data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
+  }
+
+  Stream<List<Ticket>> reviewsTickets(String userApp) {
+    return database
+        .stream(primaryKey: ['id'])
+        .eq('stateticket', 'En Revisión')
+        .order('changeState', ascending: false)
+        .map((data) =>
+            data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
+  }
+
+  Stream<List<Ticket>> processTickets(String userApp) {
+    return database
+        .stream(primaryKey: ['id'])
+        .eq('stateticket', 'En Proceso')
+        .order('changeState', ascending: false)
+        .map((data) =>
+            data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
+  }
+
 
 
   // Actualizar ticket General
@@ -41,10 +69,9 @@ class TicketService {
 
   // Actualizar estado del ticket por usuario
   Future updateTicketClose(Ticket ticket, String formattedDate) async {
-    await database.update({
-      'stateticket': 'Resuelto',
-      'changeState': formattedDate
-    }).eq('id', ticket.id!);
+    await database
+        .update({'stateticket': 'Resuelto', 'changeState': formattedDate}).eq(
+            'id', ticket.id!);
   }
 
   // Eliminar ticket
