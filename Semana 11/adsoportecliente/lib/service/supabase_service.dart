@@ -28,7 +28,7 @@ class TicketService {
             data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
   }
 
-  Stream<List<Ticket>> createsTickets(String userApp) {
+  Stream<List<Ticket>> createsTickets() {
     return database
         .stream(primaryKey: ['id'])
         .eq('stateticket', 'Creado')
@@ -37,7 +37,7 @@ class TicketService {
             data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
   }
 
-  Stream<List<Ticket>> reviewsTickets(String userApp) {
+  Stream<List<Ticket>> reviewsTickets() {
     return database
         .stream(primaryKey: ['id'])
         .eq('stateticket', 'En Revisión')
@@ -46,7 +46,7 @@ class TicketService {
             data.map((ticketMap) => Ticket.fromMap(ticketMap)).toList());
   }
 
-  Stream<List<Ticket>> processTickets(String userApp) {
+  Stream<List<Ticket>> processTickets() {
     return database
         .stream(primaryKey: ['id'])
         .eq('stateticket', 'En Proceso')
