@@ -14,11 +14,17 @@ class _ResgisterpageState extends State<Resgisterpage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  bool _showPassword = true;
+  bool _showConfirmPassword = true;
+  final _nameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
   void singUp() async {
     final email = _emailController.text;
     final password = _passwordController.text;
     final confirmPassword = _confirmPasswordController.text;
+    final name = _nameController.text;
+    final lastName = _lastNameController.text;
 
     if (password != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -28,7 +34,7 @@ class _ResgisterpageState extends State<Resgisterpage> {
     }
 
     try {
-      await authService.singUpWithEmailAndPassword(email, password);
+      await authService.singUpWithEmailAndPassword(name,lastName, email, password);
       Navigator.pop(context);
     } catch (e) {
       if (mounted) {
@@ -63,10 +69,31 @@ class _ResgisterpageState extends State<Resgisterpage> {
               ),
               const SizedBox(height: 30),
               TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: "Nombre",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _lastNameController,
+                decoration: InputDecoration(
+                  labelText: "Apellido",
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: "Correo Electrónico",
-                  prefixIcon: const Icon(Icons.email_outlined),
+
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -75,10 +102,22 @@ class _ResgisterpageState extends State<Resgisterpage> {
               const SizedBox(height: 20),
               TextField(
                 controller: _passwordController,
-                obscureText: true,
+                obscureText: _showPassword,
                 decoration: InputDecoration(
                   labelText: "Contraseña",
-                  prefixIcon: const Icon(Icons.lock_outline),
+
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _showPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _showPassword = !_showPassword;
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -87,10 +126,21 @@ class _ResgisterpageState extends State<Resgisterpage> {
               const SizedBox(height: 20),
               TextField(
                 controller: _confirmPasswordController,
-                obscureText: true,
+                obscureText: _showConfirmPassword,
                 decoration: InputDecoration(
                   labelText: "Confirmar Contraseña",
-                  prefixIcon: const Icon(Icons.lock_reset_outlined),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _showConfirmPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _showConfirmPassword = !_showConfirmPassword;
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -113,18 +163,18 @@ class _ResgisterpageState extends State<Resgisterpage> {
                 ),
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Loginpage()));
+              TextButton(onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Loginpage()));
                 },
                 child: const Text(
-                  "¿Ya tienes cuenta? Inicia Sesión",
+                "¿Ya tienes cuenta? Inicia Sesión",
                   style: TextStyle(
-                    color: Colors.green,
-                    decoration: TextDecoration.underline,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
                   ),
-                ),
+              ),
               ),
             ],
           ),

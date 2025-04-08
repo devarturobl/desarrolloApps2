@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_service.dart';
+import 'package:soportecliente/model/ticket.dart';
 import 'package:soportecliente/pages/creates.dart';
 import 'package:soportecliente/pages/historytickets.dart';
 import 'package:soportecliente/pages/inprocess.dart';
@@ -17,6 +18,8 @@ class Profilepage extends StatefulWidget {
 class _ProfilepageState extends State<Profilepage> {
   final authService = AuthService();
   final ticketService = TicketService();
+  bool isExtended = true;
+  int selectedIndex = 0;
 
   void logout() async {
     try {
@@ -31,97 +34,164 @@ class _ProfilepageState extends State<Profilepage> {
     }
   }
 
+  Widget _buildHeader(String userEmail) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 10),
+        CircleAvatar(
+          radius: 20,
+          child: Text(userEmail[0].toUpperCase()),
+        ),
+        const SizedBox(height: 10),
+      ],
+    );
+  }
+
+  Widget _buildNavigationContent() {
+    final List<NavigationRailDestination> destinations = [
+      const NavigationRailDestination(
+        icon: Icon(Icons.home_outlined),
+        selectedIcon: Icon(Icons.home_filled),
+        label: Text('Home'),
+      ),
+      NavigationRailDestination(
+        icon: Stack(
+      children: [
+      const Icon(Icons.new_label_outlined),
+      StreamBuilder<List<Ticket>>(
+      stream: ticketService.closedTickets(
+      authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
+      builder: (context, snapshot) {
+      if (!snapshot.hasData) return const SizedBox();
+      final count = snapshot.data!.length;
+      if (count == 0) return const SizedBox();
+      return Badge.count(count: count,
+      child: const Icon(Icons.new_label_outlined),
+      );
+      },
+      ),
+      ],
+      ),
+        selectedIcon: Icon(Icons.new_label),
+        label: Text('Creados'),
+      ),
+      NavigationRailDestination(
+        icon: const Icon(Icons.remove_red_eye_outlined),
+        selectedIcon: const Icon(Icons.remove_red_eye),
+        label: const Text('En Revisión'),
+      ),
+      const NavigationRailDestination(
+        icon: Icon(Icons.work_outline),
+        selectedIcon: Icon(Icons.work),
+        label: Text('En Proceso'),
+      ),
+      const NavigationRailDestination(
+        icon: Icon(Icons.check_circle_outline),
+        selectedIcon: Icon(Icons.check_circle),
+        label: Text('Resuelto'),
+      ),
+      const NavigationRailDestination(
+        icon: Icon(Icons.logout),
+        label: Text('Cerrar Sesión'),
+      ),
+    ];
+
+    return NavigationRail(
+      extended: isExtended,
+      backgroundColor: const Color.fromARGB(255, 1, 19, 33),
+      selectedIndex: selectedIndex,
+      onDestinationSelected: (int index) {
+        setState(() {
+          selectedIndex = index;
+        });
+        switch (index) {
+          case 0:
+            setState(() {
+              selectedIndex = 0;
+            });
+            break;
+          case 1:
+            setState(() {
+              selectedIndex = 1;
+            });
+            break;
+          case 2:
+            setState(() {
+              selectedIndex = 2;
+            });
+            break;
+          case 3:
+            setState(() {
+              selectedIndex = 3;
+            });
+            break;
+          case 4:
+            setState(() {
+              selectedIndex = 4;
+            });
+            break;
+          case 5:
+            logout();
+            break;
+        }
+      },
+      labelType: isExtended
+          ? NavigationRailLabelType.none
+          : NavigationRailLabelType.none,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: _buildHeader(
+            authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
+      ),
+      destinations: destinations,
+    );
+  }
+
+  Widget _buildContent() {
+    switch (selectedIndex) {
+      case 0:
+        return const Center(child: Text("Bienvenido"));
+      case 1:
+        return const Creates();
+      case 2:
+        return const UnderReview();
+      case 3:
+        return const InProcess();
+      case 4:
+        return const HistoryTickets();
+      default:
+        return const Center(child: Text("Bienvenido"));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final userEmail =
-        authService.getCurrentUserEmail() ?? 'Usuario desconocido';
-
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 1, 19, 33),
-          title: const Text("Dashboard Administrador Soporte Tecnico",
-              style: TextStyle(fontWeight: FontWeight.bold)),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                decoration:
-                    BoxDecoration(color: Color.fromARGB(255, 1, 19, 33)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Administrador',
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    ),
-                    const SizedBox(height: 10),
-                    const Center(
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage:
-                            AssetImage('assets/profile_placeholder.png'),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      userEmail,
-                      style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text('Home'),
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                leading: const Icon(Icons.new_label),
-                title: const Text('Creados'),
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Creates())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.reviews),
-                title: const Text('En Revisión'),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const UnderReview())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.work),
-                title: const Text('En Proceso'),
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const InProcess())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.safety_check_sharp),
-                title: const Text('Resuelto'),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HistoryTickets())),
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text('Cerrar Sesion'),
-                onTap: () {
-                  authService.singOut();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Loginpage()));
-                },
-              ),
-            ],
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 1, 19, 33),
+        title: const Text("Dashboard Administrador Soporte Tecnico",
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 14.0),
+          child: IconButton(
+            icon: Icon(isExtended ? Icons.menu_open : Icons.menu, size: 30),
+            onPressed: () {
+              setState(() {
+                isExtended = !isExtended;
+              });
+            },
           ),
         ),
-        body: Center(
-          child: Text("Bienvenido"),
-        ));
+      ),
+      body: Row(
+        children: [
+          _buildNavigationContent(),
+          Expanded(
+            child: _buildContent(),
+          ),
+        ],
+      ),
+    );
   }
 }
