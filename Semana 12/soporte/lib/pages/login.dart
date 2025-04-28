@@ -1,102 +1,106 @@
-import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter/material.dart';
+import 'package:soporte/auth/auth_service.dart';
+import 'package:soporte/pages/profile.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Loginpage extends StatefulWidget {
+  const Loginpage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Loginpage> createState() => _LoginpageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
+class _LoginpageState extends State<Loginpage> {
+  final authService = AuthService();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  void login() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    try {
+      await authService.singInWithEmailAndPassword(email, password);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Profile()));
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Bienvenido de Nuevo",
-                  style: TextStyle(fontSize: 30),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Lottie.asset(
+                'assets/login.json',
+                width: 200,
+                height: 250,
+              ),
+              const Text(
+                "Bienvenido al Sistema de Soporte Técnico",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  "Iniciar Sesion",
-                  style: TextStyle(fontSize: 25),
-                ),
-                //abimation
-                Lottie.asset(
-                  'assets/login.json',
-                  width: 300,
-                  height: 300,
-                ),
-                TextFormField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.email),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.lock),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // Add your login logic here
-                      print('Email: ${_emailController.text}');
-                      print('Password: ${_passwordController.text}');
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size.fromHeight(50),
-                  ),
-                  child: const Text(
-                    'Iniciar',
-                    style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                "Iniciar Sesión",
+                style: TextStyle(fontSize: 25),
+              ),
+              const SizedBox(height: 30),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: "Correo Electrónico",
+                  prefixIcon: const Icon(Icons.email_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Contraseña",
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: login,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  "Iniciar Sesión",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
   }
 }
