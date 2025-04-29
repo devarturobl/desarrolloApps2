@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_gate.dart';
 //import 'package:soportecliente/storage/demostorage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 void main() async {
   Supabase.initialize(
@@ -17,12 +18,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ShadApp.material(
       title: 'Soporte Cliente',
-      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: AuthGate(),
-      //home: Demostorage(),
+        darkTheme: ShadThemeData(
+          brightness: Brightness.dark,
+          colorScheme: const ShadSlateColorScheme.dark(),
+        )
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 import 'package:soportecliente/auth/auth_service.dart';
 import 'package:soportecliente/pages/loginpage.dart';
 
@@ -49,134 +50,121 @@ class _ResgisterpageState extends State<Resgisterpage> {
     return Scaffold(
       //backgroundColor: Colors.grey[100],
       body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Crea tu cuenta",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  //color: Colors.blueAccent,
+        child: ShadCard(
+          width: 400,
+          title: const Text("Crea tu cuenta"),
+          description: const Text(
+            "Regístrate para acceder",
+            style: TextStyle(fontSize: 16),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ShadInputFormField(
+                  id: 'username',
+                  controller: _nameController,
+                  label: const Text('Nombre'),
+                  placeholder: const Text('Enter your username'),
+                  description: const Text('This is your public display name.'),
+                  validator: (v) {
+                    if (v.length < 2) {
+                      return 'Username must be at least 2 characters.';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "Regístrate para acceder",
-                style: TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 30),
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: "Nombre",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _lastNameController,
-                decoration: InputDecoration(
-                  labelText: "Apellido",
+                ShadInputFormField(
+                  id: 'lastname',
+                  controller: _lastNameController,
+                  label: const Text('Lastname'),
+                  placeholder: const Text('Enter your lastname'),
 
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  validator: (v) {
+                    if (v.length < 2) {
+                      return 'Username must be at least 2 characters.';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: "Correo Electrónico",
+                ShadInputFormField(
+                  id: 'email',
+                  controller: _emailController,
+                  label: const Text('email'),
+                  placeholder: const Text('Enter your email'),
 
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  validator: (v) {
+                    if (v.length < 2) {
+                      return 'Username must be at least 2 characters.';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _passwordController,
-                obscureText: _showPassword,
-                decoration: InputDecoration(
-                  labelText: "Contraseña",
-
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _showPassword
+                ShadInputFormField(
+                  id: 'password',
+                  obscureText: _showPassword,
+                  controller: _passwordController,
+                  label: const Text('Password'),
+                  placeholder: const Text('Enter your password'),
+                  trailing: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                      child: Icon(_showPassword
                           ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _showPassword = !_showPassword;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                          : Icons.visibility_off)),
+                  validator: (v) {
+                    if (v.length < 2) {
+                      return 'Username must be at least 2 characters.';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _confirmPasswordController,
-                obscureText: _showConfirmPassword,
-                decoration: InputDecoration(
-                  labelText: "Confirmar Contraseña",
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _showConfirmPassword
+                ShadInputFormField(
+                  id: 'confirm_password',
+                  obscureText: _showConfirmPassword,
+                  controller: _confirmPasswordController,
+                  label: const Text('Confirm Password'),
+                  placeholder: const Text('Enter your confirm password'),
+                  trailing: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showConfirmPassword = !_showConfirmPassword;
+                        });
+                      },
+                      child: Icon(_showConfirmPassword
                           ? Icons.visibility
-                          : Icons.visibility_off,
+                          : Icons.visibility_off)),
+                  validator: (v) {
+                    if (v.length < 2) {
+                      return 'Username must be at least 2 characters.';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 30),
+                ShadButton(
+                  child: const Text("Registrarse"),
+                  onPressed: ()=> singUp(),
+                ),
+                const SizedBox(height: 20),
+                TextButton(onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Loginpage()));
+                  },
+                  child: const Text(
+                  "¿Ya tienes cuenta? Inicia Sesión",
+                    style: TextStyle(
+                      color: Colors.blue,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _showConfirmPassword = !_showConfirmPassword;
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
                 ),
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: singUp,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
                 ),
-                child: const Text(
-                  "Registrarse",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 20),
-              TextButton(onPressed: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Loginpage()));
-                },
-                child: const Text(
-                "¿Ya tienes cuenta? Inicia Sesión",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
-                  ),
-              ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

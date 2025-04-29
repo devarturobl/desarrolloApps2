@@ -47,6 +47,32 @@ class _ProfilepageState extends State<Profilepage> {
       ],
     );
   }
+  Widget _buildBadgeIcon({
+    required IconData icon,
+    required Stream<List<Ticket>> stream,
+  }) {
+    return Stack(
+      children: [
+        Icon(icon),
+        StreamBuilder<List<Ticket>>(
+          stream: stream,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) return const SizedBox();
+            final count = snapshot.data!.length;
+            if (count == 0) return const SizedBox();
+            return Positioned(
+              right: 0,
+              top: 0,
+              child: Badge.count(
+                count: count,
+                child: SizedBox(width: 0, height: 0),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
 
   Widget _buildNavigationContent() {
     final List<NavigationRailDestination> destinations = [
@@ -56,72 +82,24 @@ class _ProfilepageState extends State<Profilepage> {
         label: Text('Home'),
       ),
       NavigationRailDestination(
-        icon: Stack(
-          children: [
-            const Icon(Icons.new_label_outlined),
-            StreamBuilder<List<Ticket>>(
-              stream: ticketService.createsTickets(
-                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const SizedBox();
-                final count = snapshot.data!.length;
-                if (count == 0) return const SizedBox();
-                return Badge.count(
-                  count: count,
-                  child: const Icon(Icons.new_label_outlined),
-                );
-              },
-            ),
-          ],
+        icon: _buildBadgeIcon(
+          icon: Icons.new_label_outlined,
+          stream: ticketService.createsTickets(),
         ),
-        selectedIcon: Icon(Icons.new_label),
+        selectedIcon: const Icon(Icons.new_label),
         label: Text('Creados'),
       ),
-      NavigationRailDestination(
-        icon: Stack(
-          children: [
-            const Icon(Icons.remove_red_eye_outlined),
-            StreamBuilder<List<Ticket>>(
-              stream: ticketService.reviewsTickets(
-                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const SizedBox();
-                final count = snapshot.data!.length;
-                if (count == 0) return const SizedBox();
-                return Badge.count(
-                  count: count,
-                  child: Icon(Icons.remove_red_eye_outlined),
-                );
-              },
-            ),
-          ],
-        ),
-        selectedIcon: const Icon(Icons.remove_red_eye),
-        label: Text('En Revisión'),
+      const NavigationRailDestination(
+        icon: Icon(Icons.remove_red_eye_outlined),
+        selectedIcon: Icon(Icons.remove_red_eye),
+        label: Text('En revision'),
       ),
-      //lkalsdjkmdsal ksdmalsda kdasm lasd lkasnd
-      NavigationRailDestination(
-        icon: Stack(
-          children: [
-            const Icon(Icons.work_outline),
-            StreamBuilder<List<Ticket>>(
-              stream: ticketService.processTickets(
-                  authService.getCurrentUserEmail() ?? 'Usuario desconocido'),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const SizedBox();
-                final count = snapshot.data!.length;
-                if (count == 0) return const SizedBox();
-                return Badge.count(
-                  count: count,
-                  child: Icon(Icons.work_outline),
-                );
-              },
-            ),
-          ],
-        ),
-        selectedIcon: const Icon(Icons.work),
+      const NavigationRailDestination(
+        icon: Icon(Icons.work_outline),
+        selectedIcon: Icon(Icons.work),
         label: Text('En Proceso'),
       ),
+
       const NavigationRailDestination(
         icon: Icon(Icons.check_circle_outline),
         selectedIcon: Icon(Icons.check_circle),
