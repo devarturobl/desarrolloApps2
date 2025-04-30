@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:soportecliente/auth/auth_service.dart';
 import 'package:soportecliente/model/ticket.dart';
-import 'package:soportecliente/pages/add_ticket.dart';
+import 'package:soportecliente/pages/add_user.dart';
 import 'package:soportecliente/pages/historytickets.dart';
 import 'package:soportecliente/pages/loginpage.dart';
 import 'package:soportecliente/pages/showimage.dart';
@@ -24,7 +24,8 @@ class _ProfilepageState extends State<Profilepage> {
       await authService.singOut();
       Navigator.push(
           // ignore: use_build_context_synchronously
-          context, MaterialPageRoute(builder: (context) => const Loginpage()));
+          context,
+          MaterialPageRoute(builder: (context) => const Loginpage()));
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context)
@@ -41,7 +42,7 @@ class _ProfilepageState extends State<Profilepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 1, 19, 33),
-        title: const Text("Dashboard",
+        title: const Text("Dashboard Soporte Tecnico",
             style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       drawer: Drawer(
@@ -51,25 +52,18 @@ class _ProfilepageState extends State<Profilepage> {
             DrawerHeader(
               decoration: BoxDecoration(color: Color.fromARGB(255, 1, 19, 33)),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    'Soporte Tecnico',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    'Administrador Soporte Tecnico',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  const SizedBox(height: 10),
-                  const Center(
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundImage:
-                          AssetImage('assets/profile_placeholder.png'),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   Text(
                     userEmail,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                        fontSize: 13, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -80,10 +74,10 @@ class _ProfilepageState extends State<Profilepage> {
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
-              leading: const Icon(Icons.add),
-              title: const Text('Levantar ticket'),
+              leading: const Icon(Icons.person_add),
+              title: const Text('Agreegar Cliente'),
               onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AddTicket())),
+                  MaterialPageRoute(builder: (context) => const AddUser())),
             ),
             ListTile(
               leading: const Icon(Icons.history),

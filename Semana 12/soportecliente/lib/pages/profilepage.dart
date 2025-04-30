@@ -24,7 +24,8 @@ class _ProfilepageState extends State<Profilepage> {
       await authService.singOut();
       Navigator.push(
           // ignore: use_build_context_synchronously
-          context, MaterialPageRoute(builder: (context) => const Loginpage()));
+          context,
+          MaterialPageRoute(builder: (context) => const Loginpage()));
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context)
@@ -51,16 +52,16 @@ class _ProfilepageState extends State<Profilepage> {
             DrawerHeader(
               decoration: BoxDecoration(color: Color.fromARGB(255, 1, 19, 33)),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    'Soporte Tecnico',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    'Cliente Soporte Tecnico',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   const SizedBox(height: 10),
                   const Center(
                     child: CircleAvatar(
-                      radius: 20,
+                      radius: 30,
                       backgroundImage:
                           AssetImage('assets/profile_placeholder.png'),
                     ),
@@ -68,8 +69,9 @@ class _ProfilepageState extends State<Profilepage> {
                   const SizedBox(height: 10),
                   Text(
                     userEmail,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                        fontSize: 13, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
