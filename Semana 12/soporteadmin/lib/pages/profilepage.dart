@@ -8,6 +8,7 @@ import 'package:soportecliente/pages/loginpage.dart';
 import 'package:soportecliente/pages/showimage.dart';
 import 'package:soportecliente/service/supabase_service.dart';
 
+
 class Profilepage extends StatefulWidget {
   const Profilepage({super.key});
 
@@ -38,7 +39,6 @@ class _ProfilepageState extends State<Profilepage> {
   Widget build(BuildContext context) {
     final userEmail =
         authService.getCurrentUserEmail() ?? 'Usuario desconocido';
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 1, 19, 33),
@@ -60,7 +60,7 @@ class _ProfilepageState extends State<Profilepage> {
                   ),
                   const SizedBox(height: 30),
                   Text(
-                    userEmail,
+                    userEmail.toString(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 13, fontWeight: FontWeight.bold),
@@ -75,7 +75,7 @@ class _ProfilepageState extends State<Profilepage> {
             ),
             ListTile(
               leading: const Icon(Icons.person_add),
-              title: const Text('Agreegar Cliente'),
+              title: const Text('Agreegar Usuario'),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const AddUser())),
             ),

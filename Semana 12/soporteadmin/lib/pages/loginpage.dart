@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soportecliente/auth/auth_service.dart';
 import 'package:soportecliente/pages/profilepage.dart';
-import 'package:soportecliente/pages/resgisterpage.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -21,8 +20,15 @@ class _LoginpageState extends State<Loginpage> {
 
     try {
       await authService.singInWithEmailAndPassword(email, password);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Profilepage()));
+      final user = authService.getCurrentUserAll();
+      if (user?.userMetadata?['rol'] == 'Administrador') {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Profilepage()));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Usuario no autorizado")));
+        authService.singOut();
+      }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context)
@@ -90,20 +96,6 @@ class _LoginpageState extends State<Loginpage> {
                 child: const Text(
                   "Iniciar Sesión",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Resgisterpage()));
-                },
-                child: const Text(
-                  "¿No tienes cuenta? Regístrate",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
                 ),
               ),
             ],

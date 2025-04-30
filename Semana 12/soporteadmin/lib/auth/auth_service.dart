@@ -12,12 +12,14 @@ class AuthService {
 
   //Sing Up
   Future<AuthResponse> singUpWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, String name, String lastName, String rol) async {
     return await _supabase.auth.signUp(
         email: email,
         password: password,
         data: {
-          'rol': 'usuario',
+          'rol': rol,
+          'nombre': name,
+          'apellidos': lastName,
         }
     );
   }
@@ -32,5 +34,11 @@ class AuthService {
     final session = _supabase.auth.currentSession;
     final user = session?.user;
     return user?.email;
+  }
+
+  User? getCurrentUserAll() {
+    final session = _supabase.auth.currentSession;
+    final user = session?.user;
+    return user;
   }
 }
