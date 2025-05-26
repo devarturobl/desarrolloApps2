@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:soportecliente/auth/auth_service.dart';
-import 'package:soportecliente/model/ticket.dart';
-import 'package:soportecliente/pages/add_user.dart';
-import 'package:soportecliente/pages/historytickets.dart';
-import 'package:soportecliente/pages/loginpage.dart';
-import 'package:soportecliente/pages/showimage.dart';
-import 'package:soportecliente/service/supabase_service.dart';
+import 'package:soporteadministrador/auth/auth_service.dart';
+import 'package:soporteadministrador/model/ticket.dart';
+import 'package:soporteadministrador/pages/add_user.dart';
+import 'package:soporteadministrador/pages/historytickets.dart';
+import 'package:soporteadministrador/pages/loginpage.dart';
+import 'package:soporteadministrador/pages/showimage.dart';
+import 'package:soporteadministrador/service/supabase_service.dart';
+
 
 
 class Profilepage extends StatefulWidget {

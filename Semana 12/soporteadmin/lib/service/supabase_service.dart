@@ -1,4 +1,4 @@
-import 'package:soportecliente/model/ticket.dart';
+import 'package:soporteadministrador/model/ticket.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TicketService {
