@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
       title: 'Soporte Cliente',
       debugShowCheckedModeBanner: false,
       home: AuthGate(),
+      themeMode: ThemeMode.dark,
+      theme: ShadThemeData(
+          brightness: Brightness.light,
+          colorScheme: const ShadSlateColorScheme.light(),
+        ),
         darkTheme: ShadThemeData(
           brightness: Brightness.dark,
           colorScheme: const ShadSlateColorScheme.dark(),
